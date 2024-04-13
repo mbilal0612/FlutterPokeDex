@@ -25,6 +25,12 @@ final Map<String, Color> typeColors = {
   'Ground': Colors.brown,
   'Grass': Colors.green,
   'Bug': Colors.greenAccent,
+  'Ghost':Colors.deepPurple,
+  'Steel': Colors.blueGrey,
+  'Dragon': Colors.blueAccent,
+  'Ice': Colors.lightBlueAccent,
+  'Fairy':Colors.pinkAccent,
+  'Dark': Colors.black87,
   // Add more types and their corresponding colors as needed
 };
 
