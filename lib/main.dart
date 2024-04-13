@@ -1,7 +1,9 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
+import 'package:pokedex/screens/pokemon_details.dart';
 import 'package:pokedex/models/pokemon.dart';
 import 'package:pokedex/providers/pokemon_provider.dart';
+
 import 'package:provider/provider.dart';
 
 void main() {
@@ -89,9 +91,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       crossAxisCount: 2,
                       mainAxisSpacing: 7.0,
                       crossAxisSpacing: 7.0),
-                  itemBuilder: (_, index) => PokemonCard(
-                        pokemon: pokemon[index],
-                      )));
+                  itemBuilder: (_, index) => GestureDetector(
+                    child: PokemonCard(pokemon:pokemon[index]),
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                        return PokemonDetails(pokemon:pokemon[index]);
+                      }));
+                    },
+                  )));
         })
         // This trailing comma makes auto-formatting nicer for build methods.
         );
@@ -108,7 +115,8 @@ class PokemonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return
+      Card(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(30)),
       ),
@@ -160,7 +168,7 @@ class PokemonCard extends StatelessWidget {
             top:55,left: 5,
             child: Card(
               color:Colors.black.withOpacity(0.5),
-              child: Padding(padding: const EdgeInsets.fromLTRB(4.0, 1.0, 4.0, 1.0),child: Text(pokemon.type[0], style: const TextStyle(color: Colors.white),)),
+              child: Padding(padding: const EdgeInsets.fromLTRB(8.0, 2.0, 8.0, 2.0),child: Text(pokemon.type[0], style: const TextStyle(color: Colors.white),)),
             ),
           )
         ],
