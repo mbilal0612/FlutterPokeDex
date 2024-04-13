@@ -72,11 +72,11 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           toolbarHeight: 150,
           backgroundColor: Colors.white,
-          title: Text(widget.title,
+          title: Padding(padding:const EdgeInsets.fromLTRB(0, 100, 0, 0) ,child:Text(widget.title,
               style: const TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blueGrey)),
+                  color: Colors.blueGrey))),
         ),
         body: Consumer<PokemonProvider>(builder: (context, value, child) {
           if (value.isLoading) {
