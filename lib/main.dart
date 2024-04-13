@@ -126,7 +126,7 @@ class PokemonCard extends StatelessWidget {
           Positioned(
             right: 7,
             top: 20,
-            child: Image.network(pokemon.img),
+            child: Hero(tag:'img${pokemon.num}', child: Image.network(pokemon.img),),
           ),
           Positioned(
               top: 30,

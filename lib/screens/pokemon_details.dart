@@ -13,7 +13,7 @@ class PokemonDetails extends StatefulWidget {
 
 final Map<String, Color> typeColors = {
   'Normal':
-  Colors.grey, // Replace 'Normal color code' with the actual color code
+      Colors.grey, // Replace 'Normal color code' with the actual color code
   'Fire': Colors.red,
   'Water': Colors.blue,
   'Electric': Colors.yellow,
@@ -27,7 +27,6 @@ final Map<String, Color> typeColors = {
   'Bug': Colors.greenAccent,
   // Add more types and their corresponding colors as needed
 };
-
 
 class _PokemonDetails extends State<PokemonDetails> {
   @override
@@ -53,46 +52,66 @@ class _PokemonDetails extends State<PokemonDetails> {
               child: SizedBox(
                 height: MediaQuery.of(context).size.height * 0.5,
                 width: MediaQuery.of(context).size.width,
-
-                  child: Stack(
-                    children: [
-                      Positioned(
-                          top: 70,
-                          left:100,
-                          child: SizedBox(
-                            height: 250,
-                            width: 250,
-                            child:AspectRatio(aspectRatio:16/9, child: Image.network(widget.pokemon.img, fit:BoxFit.cover),),)
+                child: Stack(
+                  children: [
+                    Positioned(
+                        top: 70,
+                        left: 100,
+                        child: Hero(
+                            tag: 'img${widget.pokemon.num}',
+                            child: SizedBox(
+                              height: 250,
+                              width: 250,
+                              child: AspectRatio(
+                                aspectRatio: 16 / 9,
+                                child: Image.network(widget.pokemon.img,
+                                    fit: BoxFit.cover),
+                              ),
+                            ))),
+                    Positioned(
+                      top: 5,
+                      left: 10,
+                      child: Text(
+                        widget.pokemon.name,
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold),
                       ),
-                      Positioned(
-                        top: 5,
-                        left: 10,
-                        child: Text(widget.pokemon.name,
-                          style:  const TextStyle( color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),),
+                    ),
+                    Positioned(
+                      top: 5,
+                      right: 5,
+                      child: Text(
+                        "#${widget.pokemon.num}",
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 24),
                       ),
-                      Positioned(
-                        top: 5,
-                          right: 5,
-                          child: Text("#${widget.pokemon.num}",
-                            style:  const TextStyle( color: Colors.white, fontSize: 24),),
+                    ),
+                    Positioned(
+                      top: 55,
+                      left: 5,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        color: Colors.black.withOpacity(0.5),
+                        child: Padding(
+                            padding:
+                                const EdgeInsets.fromLTRB(20.0, 4.0, 20.0, 4.0),
+                            child: Text(
+                              widget.pokemon.type
+                                  .toString()
+                                  .replaceFirst("[", "")
+                                  .replaceFirst("]", ""),
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 20),
+                            )),
                       ),
-
-
-
-                      Positioned(
-
-                        top:55,left: 5,
-                        child: Card(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                          color:Colors.black.withOpacity(0.5),
-                          child: Padding(padding: const EdgeInsets.fromLTRB(20.0, 4.0, 20.0, 4.0),child: Text(widget.pokemon.type.toString().replaceFirst("[", "").replaceFirst("]", ""), style: const TextStyle(color: Colors.white, fontSize: 20),)),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-            
+            ),
 
             // Positioned(
             //   child: Card( child:Text(widget.pokemon.name))
@@ -137,7 +156,7 @@ class DetailsCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Colors.blueGrey)),
               const SizedBox(
-                width: 60,
+                width: 90,
               ),
               Text(widget.pokemon.name,
                   style: const TextStyle(fontSize: 20, color: Colors.black))
@@ -157,7 +176,7 @@ class DetailsCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Colors.blueGrey)),
               const SizedBox(
-                width: 60,
+                width:90,
               ),
               Text(widget.pokemon.height,
                   style: const TextStyle(fontSize: 20, color: Colors.black))
@@ -177,7 +196,7 @@ class DetailsCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Colors.blueGrey)),
               const SizedBox(
-                width: 60,
+                width: 90,
               ),
               Text(widget.pokemon.weight,
                   style: const TextStyle(fontSize: 20, color: Colors.black))
@@ -197,7 +216,7 @@ class DetailsCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Colors.blueGrey)),
               const SizedBox(
-                width: 35,
+                width: 40,
               ),
               Text(widget.pokemon.spawn_time,
                   style: const TextStyle(fontSize: 20, color: Colors.black))
